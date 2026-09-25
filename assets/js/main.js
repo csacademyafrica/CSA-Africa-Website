@@ -211,7 +211,9 @@
     var slides = $$('[data-hero-slide]', slideWrap);
     if (slides.length > 1) {
       var at = 0, timer = null;
-      var HOLD = 5500;
+      // Short enough that the change is obvious rather than something you
+      // only notice if you happen to look back at the hero.
+      var HOLD = 3200;
 
       var show = function (n) {
         slides[at].classList.remove('is-on');

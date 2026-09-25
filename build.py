@@ -1084,11 +1084,30 @@ def news():
 
 # ------------------------------------------------------------------ inuka
 HERO_SLIDES = [
-    ("story/inuka-hero",   "The INUKA Mombasa cohort outside Swahilipot Hub, Mombasa"),
-    ("story/inuka-hero-2", "The full room during a plenary session at INUKA Mombasa"),
-    ("story/inuka-hero-3", "A panel session in progress at INUKA Mombasa"),
-    ("story/inuka-hero-4", "Participants working together around a table at INUKA Mombasa"),
-    ("story/inuka-hero-5", "A speaker addressing participants at INUKA Mombasa"),
+    ("story/inuka-hero",    "The INUKA Mombasa cohort outside Swahilipot Hub, Mombasa"),
+    ("story/inuka-hero-2",  "The full room during a plenary session at INUKA Mombasa"),
+    ("story/inuka-hero-3",  "A panel session in progress at INUKA Mombasa"),
+    ("story/inuka-hero-4",  "Participants working together around a table at INUKA Mombasa"),
+    ("story/inuka-hero-5",  "A speaker addressing participants at INUKA Mombasa"),
+    ("story/inuka-hero-6",  "A speaker addressing seated participants in the open-sided hall"),
+    ("story/inuka-hero-7",  "Facilitators standing at the front of a session"),
+    ("story/inuka-hero-8",  "A speaker on the floor with participants seated in rows"),
+    ("story/inuka-hero-9",  "A speaker beside the presentation screen"),
+    ("story/inuka-hero-10", "A panel seated at the front while participants watch"),
+    ("story/inuka-hero-11", "A speaker addressing the room from the front"),
+    ("story/inuka-hero-12", "Participants laughing together during a session"),
+    ("story/inuka-hero-13", "A participant speaking from the floor"),
+    ("story/inuka-hero-14", "Participants with hands raised during a session"),
+    ("story/inuka-hero-15", "Speakers in conversation at the front of the room"),
+    ("story/inuka-hero-16", "A small group working around a table"),
+    ("story/inuka-hero-17", "Participants in a group discussion"),
+    ("story/inuka-hero-18", "A speaker beside the Leadership and Impact banner"),
+    ("story/inuka-hero-19", "A facilitator speaking to participants standing in the room"),
+    ("story/inuka-hero-20", "Participants listening closely in a crowded room"),
+    ("story/inuka-hero-21", "Two speakers sharing a microphone at the NAA’M Initiative banner"),
+    ("story/inuka-hero-22", "Participants on their feet during a session"),
+    ("story/inuka-hero-23", "Participants smiling in the audience"),
+    ("story/inuka-hero-24", "Participants applauding at the close of a session"),
 ]
 
 
