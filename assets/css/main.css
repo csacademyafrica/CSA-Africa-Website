@@ -1793,10 +1793,19 @@ body.nav-open { overflow: hidden; }
   background: var(--stone);
 }
 .person__pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
-/* Two people have no portrait. Rather than invent a placeholder initial,
-   their card reserves the same space, so every name in a row still sits on
-   one line. */
-.person:not(.person--pic) { padding-top: calc(clamp(1.1rem, 2.2vw, 1.5rem) + 64px + 0.85rem); }
+/* Where no photograph exists the circle carries initials instead. Same
+   size and position as a portrait, so rows still share a baseline, and it
+   reads as a considered placeholder rather than a broken image. */
+.person__pic--avatar, .speaker__pic--avatar {
+  display: grid;
+  place-items: center;
+  background: var(--stone);
+  color: var(--slate);
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
+}
+.person__pic--avatar span { font-size: 1.15rem; }
+.speaker__pic--avatar span { font-size: clamp(1.4rem, 3vw, 2rem); }
 
 /* A long biography, collapsed to its opening lines with a fade and a
    toggle. The clamp is applied by JavaScript, not here: without it the text

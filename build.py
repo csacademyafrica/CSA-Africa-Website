@@ -1151,12 +1151,26 @@ def inuka_panels():
     return "".join(out)
 
 
+def initials(name):
+    """Initials for someone with no photograph. Honorifics are skipped, so
+    Hon. Patrick Mbelle would read PM rather than HP."""
+    skip = {"dr", "hon.", "mr", "mrs", "ms", "prof", "prof.", "dr."}
+    parts = [w for w in name.split() if w.lower().strip(",") not in skip and w[0].isalpha()]
+    if not parts:
+        return "?"
+    return (parts[0][0] + (parts[-1][0] if len(parts) > 1 else "")).upper()
+
+
 def portrait(name, cls):
-    """A speaker's portrait, cropped from the event's announcement cards. Not
-    everyone has one, so callers get an empty string rather than a gap."""
+    """A speaker's portrait, cropped from the event's announcement cards.
+
+    Where there is no photograph the card shows initials rather than a gap or
+    a stock silhouette - it still identifies the person, and it does not
+    pretend to be a picture of them."""
     slug = D.INUKA_PHOTOS.get(name)
     if not slug:
-        return ""
+        return ('<div class="%s %s--avatar" aria-hidden="true"><span>%s</span></div>'
+                % (cls, cls, initials(name)))
     return '<div class="%s">%s</div>' % (cls, img("people/inuka-%s" % slug, name, sizes="140px"))
 
 
@@ -1188,12 +1202,20 @@ def inuka_roster(sessions):
         '</article>'.format(
             n=esc(n), r=r,
             pic=portrait(n, "person__pic"),
-            pc=" person--pic" if n in D.INUKA_PHOTOS else "",
+            pc=" person--pic",
             # Not everyone supplied a biography. They still led a session, so
             # they still get a card - it simply carries no disclosure.
             more=('<details class="person__more"><summary>Biography</summary>'
                   '<p>%s</p></details>' % b) if b else "")
-        for n, r, b, sess, _u in D.INUKA_PEOPLE if sess in sessions)
+        for n, r, b, sess, _u in _roster_order(sessions))
+
+
+def _roster_order(sessions):
+    """Roster order, with anyone lacking a photograph last - a lone initials
+    card mid-grid reads as a missing image rather than a deliberate one."""
+    people = [t for t in D.INUKA_PEOPLE if t[3] in sessions]
+    people.sort(key=lambda t: 0 if t[0] in D.INUKA_PHOTOS else 1)
+    return people
 
 
 def inuka():
