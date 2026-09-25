@@ -1252,8 +1252,6 @@ def inuka():
         proof of the thing the event set out to argue.</p>
     </div>
     {organisers}
-    <p class="lead" data-reveal style="margin-top:2.5rem;max-width:70ch">{also}</p>
-
   </div>
 </section>
 
@@ -1263,9 +1261,10 @@ def inuka():
       <div data-reveal>
         <p class="eyebrow">The alumni who came back</p>
         <h2 class="h2" style="max-width:18ch">Five who had sat where they were sitting</h2>
+        <p style="margin-top:1rem;color:var(--ink-2);max-width:34ch">Two of them moderated the
+          panels. In their own words, on what the four days changed.</p>
       </div>
-      <p class="lead" data-reveal>Two of them moderated the panels. In their own words, on what
-        the four days changed.</p>
+      <p class="lead" data-reveal>{also}</p>
     </div>
     <div class="rail-head" data-reveal>
       <p class="num">{nalum} alumni<span class="rail-hint"> &#183; swipe or use the arrows</span></p>
