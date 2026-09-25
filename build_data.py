@@ -330,6 +330,9 @@ VOLUNTEERS = [
 # ---------------------------------------------------------------- partners
 PARTNERS = [
     ("University of Glasgow", "partners/uni-glasgow"),
+    # INUKA Mombasa 2026 was run with these two.
+    ("NAA’M Initiative", "partners/naam-initiative"),
+    ("Swahilipot Hub Foundation", "partners/swahilipot"),
     ("University of Nairobi", "partners/uni-nairobi"),
     ("University of Lagos", "partners/uni-lagos"),
     ("University of Rwanda", "partners/uni-rwanda"),
@@ -438,8 +441,8 @@ INUKA = {
     ],
     "took_away_note": "Four days of real work on mindset, confidence, and what comes next in "
                       "life and career.",
-    "also": "Participants also met alumni from CSA Africa’s past programmes, young women "
-            "who had walked into the programme carrying the same doubts, and walked out doing "
+    "also": "Participants also met five alumni from CSA Africa’s past programmes, young "
+            "women who had walked into the programme carrying the same doubts, and walked out doing "
             "things they had not thought possible for themselves. They were hosted at Swahilipot "
             "Hub, Mombasa’s own home for youth innovation, alongside its mentors and community.",
     # Facts worth keeping from the call for applications; the deadline and the
@@ -848,4 +851,50 @@ INUKA_PHOTOS = {
     "Kanga Rasi": "kanga-rasi",
     "Jackline Waweru Wanjiru": "jackline-waweru-wanjiru",
     "Nancy Moraa Okemwa": "nancy-moraa-okemwa",
+    # came from the alumni set rather than the announcement cards
+    "Pheny Mwaisaka": "pheny-mwaisaka",
 }
+
+# --------------------------------------------------- INUKA alumni
+# The five CSA Africa alumni who came back for INUKA Mombasa. Quotes are their
+# own words, transcribed from what they sent the organisers; nothing here is
+# paraphrased.
+# (name, cohort/role, photo slug, quote)
+INUKA_ALUMNI = [
+    ("Melvine Tabitha Opondo", "CSA Africa 2025 · Moderator, Panel 1", "melvin-tabitha",
+     "INUKA gave me the opportunity to moderate my first-ever panel, which greatly strengthened "
+     "my confidence and sense of belonging. Being trusted to lead a session as a young rising "
+     "professional was both humbling and inspiring. Most importantly, the experience broadened my "
+     "worldview: through interacting with professionals, peers, and new experiences, I gained new "
+     "perspectives on how people think, lead, and see the world."),
+
+    ("Pheny Mwaisaka", "CSA Africa 2025 · Moderator, Panel 2", "pheny-mwaisaka",
+     "INUKA pushed me out of my comfort zone in the best way. I got to learn from incredible "
+     "industry experts, mentor young people, and moderate a panel, something I wasn’t entirely "
+     "confident about going into it. Four days later, I walked away with new knowledge, stronger "
+     "public-speaking confidence, and a reminder that sometimes you just have to step up and "
+     "figure it out."),
+
+    ("Cynthia Auor", "CSA Africa alumna", "cynthia-auor",
+     "The INUKA Mombasa programme shaped me through Believe, See, Build and Rise. It taught me to "
+     "Believe in my vision as a youth agripreneur and in the power of healthy soils to change "
+     "lives. It opened my eyes to See waste as wealth and farming as a viable, dignified business. "
+     "On Build, I am learning ways to strengthen my enterprise, structure my ideas, and build "
+     "solutions that truly serve smallholder farmers. Now I am ready to Rise as a leader, creating "
+     "impact and inspiring other young people to grow with purpose."),
+
+    ("Ruth Daniels", "CSA Africa alumna", "ruth-daniels",
+     "INUKA Mombasa was an amazing experience. I went there hoping to learn from the speakers, but "
+     "I ended up learning just as much from the people around me. I was inspired by their ambition "
+     "and by the way they pushed themselves beyond their comfort zones to face the things that "
+     "scared them. I came back with one thought in mind: I needed to become comfortable with being "
+     "uncomfortable. So I decided to challenge myself in an area that had always made me "
+     "uncomfortable, public speaking. I gathered people who were facing the same fear and "
+     "together, we decided to create a space where we could practise, support one another and grow."),
+
+    ("Marcella Barasa", "CSA Africa 2025", "maecella-barasa",
+     "INUKA Mombasa reminded me of the importance of rising, having Rise as one of the themes. "
+     "Failure truly shapes us and I take it as a way of restructuring my mindset, that if it did "
+     "not work today, I try until an opportunity comes through. I am now certain more than ever "
+     "that receiving rejections will be a part of the success story."),
+]

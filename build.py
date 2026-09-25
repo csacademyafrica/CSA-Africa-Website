@@ -523,9 +523,7 @@ def home():
           <a class="btn btn--amber" href="inuka-mombasa.html">See what happened {arw}</a>
         </div>
       </div>
-      <div class="split__media" data-reveal><div class="framed">{inuka_img}</div>
-        <p class="figure-caption" style="color:var(--on-dark-2)">CSA Africa 2025 &#183; University of Nairobi</p>
-      </div>
+      <div class="split__media" data-reveal><div class="framed">{inuka_img}</div></div>
     </div>
   </div>
 </section>
@@ -686,7 +684,7 @@ def home():
         org=D.ORG, arw=ARW,
         swahilipot=D.LINKS["swahilipot"],
         dates=D.INUKA["dates"], venue=esc(D.INUKA["venue"]),
-        inuka_img=img("story/session", "A CSA Africa session in progress at the 2025 workshop"),
+        inuka_img=img("story/inuka-hero", "The INUKA Mombasa cohort outside Swahilipot Hub, Mombasa"),
         sofiat=D.LINKS["sofiat_gla"],
         founder_img=img("story/founder-story",
                         "Dr Sofiat Olaosebikan with CSA Africa participants"),
@@ -1070,6 +1068,29 @@ def news():
 
 
 # ------------------------------------------------------------------ inuka
+HERO_SLIDES = [
+    ("story/inuka-hero",   "The INUKA Mombasa cohort outside Swahilipot Hub, Mombasa"),
+    ("story/inuka-hero-2", "The full room during a plenary session at INUKA Mombasa"),
+    ("story/inuka-hero-3", "A panel session in progress at INUKA Mombasa"),
+    ("story/inuka-hero-4", "Participants working together around a table at INUKA Mombasa"),
+    ("story/inuka-hero-5", "A speaker addressing participants at INUKA Mombasa"),
+]
+
+
+def hero_slides():
+    """The INUKA hero's rotating background.
+
+    The first slide is eager and carries the LCP; the rest are lazy, so the
+    page still paints on one image. If JavaScript never runs, slide one stays
+    visible and the section behaves exactly as it did as a single photograph."""
+    out = []
+    for i, (path, alt) in enumerate(HERO_SLIDES):
+        out.append('<div class="phero__slide%s" data-hero-slide>%s</div>' % (
+            " is-on" if i == 0 else "",
+            img(path, alt, eager=(i == 0), sizes="100vw")))
+    return "".join(out)
+
+
 def inuka_panels():
     """The documented panel sessions. The moderator's questions are distilled
     into themes in build_data - the run sheet itself is not public."""
@@ -1146,6 +1167,8 @@ def inuka():
     why = "".join('<p>%s</p>' % esc(p) for p in I["why"])
     beyond = "".join('<p>%s</p>' % esc(p) for p in I["beyond"])
     organisers = inuka_people(("organiser",))
+    alumni = testimonial_cards(
+        [(n, r, "people/inuka-alum-%s" % slug, q) for n, r, slug, q in D.INUKA_ALUMNI])
     roster = inuka_roster(("mc", "panel-1", "panel-2", None))
     panels = inuka_panels()
     # Counted, not typed: these numbers described the roster wrongly the moment
@@ -1162,7 +1185,7 @@ def inuka():
 
     body = """
 <section class="phero phero--photo" style="min-height:clamp(460px,72vh,720px)">
-  <div class="phero__media">{hero}</div>
+  <div class="phero__media" data-hero-slides>{hero}</div>
   <div class="phero__scrim"></div>
   <div class="shell--wide">
     <p class="eyebrow"><span class="chip">{status}</span><span class="eyebrow__txt">{partners}</span></p>
@@ -1234,6 +1257,25 @@ def inuka():
   </div>
 </section>
 
+<section class="section section--tight" data-rail-wrap>
+  <div class="shell--wide">
+    <div class="sec-head sec-head--split">
+      <div data-reveal>
+        <p class="eyebrow">The alumni who came back</p>
+        <h2 class="h2" style="max-width:18ch">Five who had sat where they were sitting</h2>
+      </div>
+      <p class="lead" data-reveal>Two of them moderated the panels. In their own words, on what
+        the four days changed.</p>
+    </div>
+    <div class="rail-head" data-reveal>
+      <p class="num">{nalum} alumni<span class="rail-hint"> &#183; swipe or use the arrows</span></p>
+      {acontrols}
+    </div>
+    <div class="rail rail--quotes" data-rail tabindex="0" role="group"
+         aria-label="INUKA Mombasa alumni, scrollable">{alumni}</div>
+  </div>
+</section>
+
 <section class="section band-stone section--tight" data-rail-wrap>
   <div class="shell--wide">
     <div class="sec-head sec-head--split">
@@ -1272,11 +1314,13 @@ def inuka():
 
 {cta}
 """.format(
-        hero=img("story/inuka-hero", "INUKA Mombasa participants gathered outside Swahilipot Hub, Mombasa", eager=True, sizes="100vw"),
+        hero=hero_slides(),
         status=I["status"], partners=esc(I["partners"]), tagline=esc(I["tagline"]),
         dates=I["dates"], venue=esc(I["venue"]), stats=stats,
         why=why, beyond=beyond, took=took, facts=facts, note=esc(I["took_away_note"]),
         organisers=organisers, roster=roster, roster_n=roster_n,
+        alumni=alumni, nalum=len(D.INUKA_ALUMNI),
+        acontrols=rail_controls("alumni"),
         rcontrols=rail_controls("speakers"),
         panels=panels, also=esc(I["also"]),
         img1=img("story/inuka-connections", "INUKA Mombasa participants talking and laughing together"),

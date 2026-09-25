@@ -202,6 +202,48 @@
     });
   });
 
+  /* ------------------------------------------------------------ hero slides */
+  // Cross-fade the INUKA hero through moments from the four days. 5.5s a
+  // slide: long enough to take a photograph in, short enough that the cycle
+  // is noticeable while someone reads the heading.
+  var slideWrap = $('[data-hero-slides]');
+  if (slideWrap && !reduced) {
+    var slides = $$('[data-hero-slide]', slideWrap);
+    if (slides.length > 1) {
+      var at = 0, timer = null;
+      var HOLD = 5500;
+
+      var show = function (n) {
+        slides[at].classList.remove('is-on');
+        at = (n + slides.length) % slides.length;
+        slides[at].classList.add('is-on');
+        // fetch the next one just before it is needed rather than all at once
+        var nxt = slides[(at + 1) % slides.length].querySelector('img');
+        if (nxt && nxt.loading === 'lazy') nxt.loading = 'eager';
+      };
+
+      var run = function () { timer = setInterval(function () { show(at + 1); }, HOLD); };
+      var halt = function () { clearInterval(timer); timer = null; };
+
+      // don't burn frames on a hero that has scrolled away, or in a
+      // background tab
+      var io2 = 'IntersectionObserver' in window
+        ? new IntersectionObserver(function (es) {
+            es.forEach(function (e) {
+              if (e.isIntersecting) { if (!timer) run(); }
+              else halt();
+            });
+          }, { threshold: 0.15 })
+        : null;
+      if (io2) io2.observe(slideWrap); else run();
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) halt();
+        else if (!timer) run();
+      });
+    }
+  }
+
   /* ------------------------------------------------------------ long bios */
   // Collapse a long biography to its opening lines behind a Read more. The
   // clamp lives here rather than in the stylesheet so that without JavaScript

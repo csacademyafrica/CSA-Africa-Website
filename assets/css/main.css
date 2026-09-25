@@ -840,6 +840,24 @@ body.nav-open { overflow: hidden; }
    above crushes the INUKA group photo to a mean luminance of 0.015 - the
    sixty faces the picture is about are barely there. This keeps white text
    well clear of AA while letting the photograph read. */
+/* The INUKA hero cycles through moments from the four days. Slides are
+   stacked and cross-faded on opacity alone - no transform, no layout work,
+   so it stays cheap behind text. Without JavaScript the first slide simply
+   stays put, which is how the section looked when it was one photograph. */
+.phero__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.1s var(--ease);
+}
+.phero__slide.is-on { opacity: 1; }
+.phero__slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (prefers-reduced-motion: reduce) {
+  /* no cycling for anyone who asked for less motion; main.js also stops the
+     timer, this is the belt to its braces */
+  .phero__slide { transition: none; }
+}
+
 .phero--photo .phero__scrim {
   background:
     linear-gradient(180deg, rgba(8, 12, 44, 0.50) 0%, rgba(8, 12, 44, 0.16) 26%, rgba(8, 12, 44, 0.74) 56%, rgba(8, 12, 44, 0.90) 100%),
