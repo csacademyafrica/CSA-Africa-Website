@@ -225,17 +225,21 @@
       var run = function () { timer = setInterval(function () { show(at + 1); }, HOLD); };
       var halt = function () { clearInterval(timer); timer = null; };
 
-      // don't burn frames on a hero that has scrolled away, or in a
-      // background tab
-      var io2 = 'IntersectionObserver' in window
-        ? new IntersectionObserver(function (es) {
-            es.forEach(function (e) {
-              if (e.isIntersecting) { if (!timer) run(); }
-              else halt();
-            });
-          }, { threshold: 0.15 })
-        : null;
-      if (io2) io2.observe(slideWrap); else run();
+      // Start straight away. The observer below is only ever allowed to
+      // pause this, never to be the thing that starts it - if it never
+      // reports (it does not, in some headless and prerender contexts) the
+      // hero would otherwise sit on slide one forever.
+      run();
+
+      // don't burn frames on a hero that has scrolled away
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) { if (!timer) run(); }
+            else halt();
+          });
+        }, { threshold: 0 }).observe(slideWrap);
+      }
 
       document.addEventListener('visibilitychange', function () {
         if (document.hidden) halt();

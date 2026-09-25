@@ -273,6 +273,18 @@ def footer():
     )
 
 
+def asset_v(rel):
+    """A short content hash for the stylesheet and script URLs.
+
+    Without it a visitor keeps whatever main.css and main.js their browser
+    cached, which is how a page can end up with new markup and old rules -
+    slides that have lost their positioning, a carousel whose script is not
+    there. The filename stays put; only the query changes."""
+    import hashlib
+    with open(os.path.join(ROOT, rel), "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()[:8]
+
+
 def page(filename, title, description, body, active, og_image="story/csa2025-group"):
     doc = """<!doctype html>
 <html lang="en">
@@ -299,8 +311,8 @@ def page(filename, title, description, body, active, og_image="story/csa2025-gro
 
 <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ibm-plex-serif-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/fonts.css?v={v_fonts}">
+<link rel="stylesheet" href="assets/css/main.css?v={v_main}">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -310,12 +322,15 @@ def page(filename, title, description, body, active, og_image="story/csa2025-gro
 {body}
 </main>
 {footer}
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v={v_main_js}" defer></script>
 </body>
 </html>
 """.format(
         title=H.escape(title, quote=True), desc=H.escape(description, quote=True),
         site=SITE, fn=filename, org=D.ORG, og=og_image,
+        v_fonts=asset_v("assets/css/fonts.css"),
+        v_main=asset_v("assets/css/main.css"),
+        v_main_js=asset_v("assets/js/main.js"),
         topbar=topbar(),
         header=header(active), body=body, footer=footer(),
     )
@@ -1260,7 +1275,7 @@ def inuka():
     <div class="sec-head sec-head--split">
       <div data-reveal>
         <p class="eyebrow">The alumni who came back</p>
-        <h2 class="h2" style="max-width:18ch">Five who had sat where they were sitting</h2>
+        <h2 class="h2" style="max-width:18ch">Five who came back to pass it on</h2>
         <p style="margin-top:1rem;color:var(--ink-2);max-width:34ch">Two of them moderated the
           panels. In their own words, on what the four days changed.</p>
       </div>

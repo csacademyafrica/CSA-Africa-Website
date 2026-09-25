@@ -861,21 +861,23 @@ INUKA_PHOTOS = {
 # paraphrased.
 # (name, cohort/role, photo slug, quote)
 INUKA_ALUMNI = [
-    ("Melvine Tabitha Opondo", "CSA Africa 2025 · Moderator, Panel 1", "melvin-tabitha",
+    ("Melvine Tabitha Opondo",
+     "CSA Africa 2025, Software Engineering track · Moderator, Panel 1", "melvin-tabitha",
      "INUKA gave me the opportunity to moderate my first-ever panel, which greatly strengthened "
      "my confidence and sense of belonging. Being trusted to lead a session as a young rising "
      "professional was both humbling and inspiring. Most importantly, the experience broadened my "
      "worldview: through interacting with professionals, peers, and new experiences, I gained new "
      "perspectives on how people think, lead, and see the world."),
 
-    ("Pheny Mwaisaka", "CSA Africa 2025 · Moderator, Panel 2", "pheny-mwaisaka",
+    ("Pheny Mwaisaka",
+     "CSA Africa 2025, Data Science track · Moderator, Panel 2", "pheny-mwaisaka",
      "INUKA pushed me out of my comfort zone in the best way. I got to learn from incredible "
      "industry experts, mentor young people, and moderate a panel, something I wasn’t entirely "
      "confident about going into it. Four days later, I walked away with new knowledge, stronger "
      "public-speaking confidence, and a reminder that sometimes you just have to step up and "
      "figure it out."),
 
-    ("Cynthia Auor", "CSA Africa alumna", "cynthia-auor",
+    ("Cynthia Auor", "CSA Africa 2025, Python Fundamentals track", "cynthia-auor",
      "The INUKA Mombasa programme shaped me through Believe, See, Build and Rise. It taught me to "
      "Believe in my vision as a youth agripreneur and in the power of healthy soils to change "
      "lives. It opened my eyes to See waste as wealth and farming as a viable, dignified business. "
@@ -883,7 +885,7 @@ INUKA_ALUMNI = [
      "solutions that truly serve smallholder farmers. Now I am ready to Rise as a leader, creating "
      "impact and inspiring other young people to grow with purpose."),
 
-    ("Ruth Daniels", "CSA Africa alumna", "ruth-daniels",
+    ("Ruth Daniels", "CSA Africa 2025, Data Science track", "ruth-daniels",
      "INUKA Mombasa was an amazing experience. I went there hoping to learn from the speakers, but "
      "I ended up learning just as much from the people around me. I was inspired by their ambition "
      "and by the way they pushed themselves beyond their comfort zones to face the things that "
@@ -892,7 +894,7 @@ INUKA_ALUMNI = [
      "uncomfortable, public speaking. I gathered people who were facing the same fear and "
      "together, we decided to create a space where we could practise, support one another and grow."),
 
-    ("Marcella Barasa", "CSA Africa 2025", "maecella-barasa",
+    ("Marcella Barasa", "CSA Africa 2025, Python Fundamentals track", "maecella-barasa",
      "INUKA Mombasa reminded me of the importance of rising, having Rise as one of the themes. "
      "Failure truly shapes us and I take it as a way of restructuring my mindset, that if it did "
      "not work today, I try until an opportunity comes through. I am now certain more than ever "
